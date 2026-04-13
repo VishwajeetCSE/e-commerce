@@ -677,7 +677,26 @@ footer .copyright{
     margin: 0 0 15px 0;
   }
   #product1 .pro {
-    width: 100%;
+    width: 48%;
+    min-width: 48%;
+    margin: 0 0 15px 0;
+    padding: 10px 10px;
+  }
+  #product1 .pro img {
+    height: auto; /* Allow image to scale down proportionally */
+  }
+  #product1 .pro .des h5 {
+    font-size: 12px; /* Make product title smaller */
+  }
+  #product1 .pro .des h4 {
+    font-size: 13px; /* Make price smaller */
+  }
+  #product1 .pro .cart {
+    bottom: 10px;
+    right: 5px;
+    width: 30px;
+    height: 30px;
+    font-size: 12px; /* Make cart button smaller */
   }
   #banner {
     height: 40vh;
