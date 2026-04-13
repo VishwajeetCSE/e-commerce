@@ -60,7 +60,12 @@ button.normal {
   cursor: pointer;
   border: none;
   outline: none;
-  transition: 0.2s;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+}
+
+button.normal:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
 }
 
 button.white {
@@ -72,7 +77,13 @@ button.white {
   cursor: pointer;
   border: 1px solid #fff;
   outline: none;
-  transition: 0.2s;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+}
+
+button.white:hover {
+  background: rgba(255, 255, 255, 0.15);
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
 }
 
 body {
@@ -677,7 +688,7 @@ footer .copyright{
     flex-direction: column;
     align-items: flex-start;
     justify-content: center;
-    position: absolute;
+    position: fixed;
     top: 80px;
     right: -300px;
     height: auto;
@@ -789,27 +800,30 @@ footer .copyright{
     margin: 0 0 15px 0;
   }
   #product1 .pro {
-    width: 31%;
-    margin: 5px;
-    padding: 8px;
+    width: 22%;
+    margin: 3px;
+    padding: 6px;
   }
   #product1 .pro img {
-    border-radius: 10px;
+    border-radius: 6px;
   }
   #product1 .pro .des h5 {
-    font-size: 11px;
+    font-size: 10px;
     margin-top: 5px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
   }
   #product1 .pro .des h4 {
-    font-size: 12px;
+    font-size: 11px;
   }
   #product1 .pro .cart {
-    bottom: 8px;
-    right: 8px;
-    width: 25px;
-    height: 25px;
-    font-size: 11px;
-    line-height: 25px;
+    bottom: 5px;
+    right: 5px;
+    width: 20px;
+    height: 20px;
+    font-size: 10px;
+    line-height: 20px;
   }
   #banner {
     height: 40vh;

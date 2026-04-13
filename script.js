@@ -15,3 +15,9 @@ if (close) {
     nav.classList.remove("active");
   });
 }
+
+document.addEventListener("click", (e) => {
+  if (nav && nav.classList.contains("active") && !nav.contains(e.target) && bar && !bar.contains(e.target)) {
+    nav.classList.remove("active");
+  }
+});
