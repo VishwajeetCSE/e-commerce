@@ -690,7 +690,8 @@ footer .copyright{
     justify-content: center;
     position: fixed;
     top: 80px;
-    right: -300px;
+    left: -300px;
+    right: auto;
     height: auto;
     width: 250px;
     background: rgba(255, 255, 255, 0.85);
@@ -700,11 +701,11 @@ footer .copyright{
     border-radius: 20px;
     box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
     padding: 40px 20px;
-    transition: right 0.4s ease;
+    transition: left 0.4s ease;
     z-index: 1000;
   }
   #navbar.active {
-    right: 20px;
+    left: 20px;
   }
   #navbar li {
     margin-bottom: 25px;
@@ -717,6 +718,9 @@ footer .copyright{
   #mobile {
     display: flex;
     align-items: center;
+  }
+  #mobile a {
+    margin-right: 20px;
   }
   #mobile i {
     color: #1a1a1a;
