@@ -690,6 +690,7 @@ footer .copyright{
   }
   #banner3 {
     padding: 0 20px;
+    flex-direction: column;
   }
   #banner3 .banner-box {
     width: 100%;
