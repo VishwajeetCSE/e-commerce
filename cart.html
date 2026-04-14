@@ -45,31 +45,8 @@
                     <td>Subtotal</td>
                 </tr>
             </thead>
-            <tbody>
-                <tr>
-                    <td><a href="#"><i class="far fa-times-circle"></i></a></td>
-                    <td><img src="img/products/f1.jpg" alt=""></td>
-                    <td>Cartoon Astronaut T-Shirts</td>
-                    <td>$118.19</td>
-                    <td><input type="number" value="1"></td>
-                    <td>$118.19</td>
-                </tr>
-                <tr>
-                    <td><a href="#"><i class="far fa-times-circle"></i></a></td>
-                    <td><img src="img/products/f2.jpg" alt=""></td>
-                    <td>Cartoon Leaf Pattern T-Shirts</td>
-                    <td>$118.19</td>
-                    <td><input type="number" value="1"></td>
-                    <td>$118.19</td>
-                </tr>
-                <tr>
-                    <td><a href="#"><i class="far fa-times-circle"></i></a></td>
-                    <td><img src="img/products/f3.jpg" alt=""></td>
-                    <td>Floral Print Summer Shirt</td>
-                    <td>$118.19</td>
-                    <td><input type="number" value="1"></td>
-                    <td>$118.19</td>
-                </tr>
+            <tbody id="cart-tbody">
+                <!-- Dynamic cart rows will map here -->
             </tbody>
         </table>
     </section>
@@ -88,7 +65,7 @@
             <table>
                 <tr>
                     <td>Cart Subtotal</td>
-                    <td>$354.57</td>
+                    <td id="cart-subtotal">$0.00</td>
                 </tr>
                 <tr>
                     <td>Shipping</td>
@@ -96,7 +73,7 @@
                 </tr>
                 <tr>
                     <td><strong>Total</strong></td>
-                    <td><strong>$354.57</strong></td>
+                    <td id="cart-total"><strong>$0.00</strong></td>
                 </tr>
             </table>
             <button class="normal">Proceed to checkout</button>

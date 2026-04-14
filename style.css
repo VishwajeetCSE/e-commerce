@@ -895,4 +895,22 @@ footer .copyright{
   #cart-add { flex-direction: column; }
   #coupon { width: 100%; }
   #subtotal { width: 100%; padding: 20px; }
-}
+}
+
+/* Global Cart Badge Styling */
+.cart-badge {
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  background-color: #088178;
+  color: #fff;
+  font-size: 10px;
+  font-weight: 700;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
