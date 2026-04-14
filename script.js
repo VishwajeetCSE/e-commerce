@@ -141,7 +141,7 @@ async function loadProducts() {
   if (!productList) return;
 
   const category = productList.getAttribute("data-category");
-  let url = '/api/products';
+  let url = 'http://localhost:3000/api/products';
   if (category && category !== 'all') {
     url += `?category=${category}`;
   }
@@ -174,7 +174,12 @@ async function loadProducts() {
     }
   } catch (error) {
     console.error("Failed to fetch products:", error);
-    productList.innerHTML = "<p style='width: 100%; text-align: center;'>Error loading products from backend server.</p>";
+    productList.innerHTML = `
+      <div style='width: 100%; text-align: center; padding: 50px; color: red;'>
+        <h2>Database Connection Error</h2>
+        <p>Ensure you are running the Node.js Server in the background!</p>
+        <p>Try opening <a href='http://localhost:3000'>http://localhost:3000</a> instead of double-clicking the file.</p>
+      </div>`;
   }
 }
 
