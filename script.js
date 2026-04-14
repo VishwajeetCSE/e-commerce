@@ -141,7 +141,10 @@ async function loadProducts() {
   if (!productList) return;
 
   const category = productList.getAttribute("data-category");
-  let url = 'http://localhost:3000/api/products';
+  
+  const isLocal = window.location.hostname === 'localhost' || window.location.protocol === 'file:';
+  let url = isLocal ? 'http://localhost:3000/api/products' : '/api/products';
+  
   if (category && category !== 'all') {
     url += `?category=${category}`;
   }
