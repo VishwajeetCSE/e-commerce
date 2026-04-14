@@ -690,8 +690,8 @@ footer .copyright{
     justify-content: center;
     position: fixed;
     top: 80px;
-    left: -300px;
-    right: auto;
+    right: -300px;
+    left: auto;
     height: auto;
     width: 250px;
     background: rgba(255, 255, 255, 0.85);
@@ -701,11 +701,11 @@ footer .copyright{
     border-radius: 20px;
     box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
     padding: 40px 20px;
-    transition: left 0.4s ease;
+    transition: right 0.4s ease;
     z-index: 1000;
   }
   #navbar.active {
-    left: 20px;
+    right: 20px;
   }
   #navbar li {
     margin-bottom: 25px;
@@ -776,9 +776,11 @@ footer .copyright{
     width: 28%;
     min-width: 30%;
   }
-  #newsletter .form {
-    width: 70%;
-  }
+  #blog { padding: 80px 40px 0 40px; }
+  #blog .blog-box { flex-direction: column; align-items: flex-start; }
+  #blog .blog-img { width: 100%; margin-right: 0; margin-bottom: 30px; }
+  #blog img { width: 100%; height: auto; object-fit: contain; }
+  #blog .blog-details { width: 100%; }
 }
 
 /* Mobile Media Query */
@@ -812,7 +814,7 @@ footer .copyright{
     padding-top: 10px;
   }
   #product1 .pro {
-    width: calc(25% - 4px); /* ensures exactly 4 items side by side */
+    width: calc(33.3% - 4px); /* ensures exactly 3 items side by side */
     min-width: unset;
     margin: 0 0 10px 0;
     padding: 5px;
