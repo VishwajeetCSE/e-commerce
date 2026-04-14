@@ -24,7 +24,6 @@ document.addEventListener("click", (e) => {
 
 // --- Dynamic Shopping Cart Logic ---
 
-// 1. Storage Utility Functions
 function getCart() {
   return JSON.parse(localStorage.getItem("shoppingCart")) || [];
 }
@@ -36,7 +35,6 @@ function saveCart(cart) {
 
 function addToCart(product) {
   const cart = getCart();
-  // Check if item already exists by Name && Image
   const existingItemIndex = cart.findIndex(item => item.name === product.name && item.image === product.image);
   
   if (existingItemIndex > -1) {
@@ -63,12 +61,10 @@ function updateQuantity(index, newQuantity) {
   if (document.getElementById("cart-tbody")) renderCartPage();
 }
 
-// 2. Global Badge Updater
 function updateCartBadge() {
   const cart = getCart();
   const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
   
-  // Find all cart badge icons on desktop/mobile instances
   const bagIcons = document.querySelectorAll('.fa-shopping-bag');
   bagIcons.forEach(bag => {
     let badge = bag.parentNode.querySelector('.cart-badge');
@@ -82,11 +78,14 @@ function updateCartBadge() {
   });
 }
 
-// 3. Attach Listeners to 'Add To Cart' Buttons Globally
 function initAddToCartListeners() {
   const addToCartButtons = document.querySelectorAll('.pro .cart');
   addToCartButtons.forEach(button => {
-    button.addEventListener('click', (e) => {
+    // avoid attaching multiple listeners
+    const newBtn = button.cloneNode(true);
+    button.parentNode.replaceChild(newBtn, button);
+    
+    newBtn.addEventListener('click', (e) => {
       e.preventDefault();
       const productBox = e.target.closest('.pro');
       if (!productBox) return;
@@ -94,8 +93,6 @@ function initAddToCartListeners() {
       const image = productBox.querySelector('img').src;
       const name = productBox.querySelector('.des h5').innerText;
       const rawPrice = productBox.querySelector('.des h4').innerText;
-      
-      // Parse price, removing any non-numeric symbols but keeping decimals
       const price = parseFloat(rawPrice.replace(/[^0-9.]/g, ''));
 
       addToCart({ name, price, image });
@@ -103,13 +100,12 @@ function initAddToCartListeners() {
   });
 }
 
-// 4. Cart Page Rendering Logic
 function renderCartPage() {
   const tbody = document.getElementById("cart-tbody");
   if (!tbody) return;
 
   const cart = getCart();
-  tbody.innerHTML = ''; // clear table
+  tbody.innerHTML = '';
   let subtotal = 0;
 
   if (cart.length === 0) {
@@ -140,9 +136,52 @@ function renderCartPage() {
   document.getElementById("cart-total").innerHTML = `<strong>${formattedSubtotal}</strong>`;
 }
 
-// 5. Initialize Everything
+async function loadProducts() {
+  const productList = document.getElementById("dynamic-product-list");
+  if (!productList) return;
+
+  const category = productList.getAttribute("data-category");
+  let url = '/api/products';
+  if (category && category !== 'all') {
+    url += `?category=${category}`;
+  }
+
+  try {
+    const response = await fetch(url);
+    const result = await response.json();
+    
+    if (result.message === 'success') {
+      productList.innerHTML = '';
+      result.data.forEach(product => {
+        const proDiv = document.createElement('div');
+        proDiv.className = 'pro';
+        
+        proDiv.innerHTML = `
+          <img src="${product.image}" alt="" onclick="window.location.href='sproduct.html';">
+          <div class="des" onclick="window.location.href='sproduct.html';">
+              <span>${product.brand}</span>
+              <h5>${product.name}</h5>
+              <div class="star">
+                  <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+              </div>
+              <h4>$${product.price}</h4>
+          </div>
+          <a href="#" class="cart"><i class="fal fa-shopping-cart"></i></a>
+        `;
+        productList.appendChild(proDiv);
+      });
+      console.log('Products fetched dynamically');
+    }
+  } catch (error) {
+    console.error("Failed to fetch products:", error);
+    productList.innerHTML = "<p style='width: 100%; text-align: center;'>Error loading products from backend server.</p>";
+  }
+}
+
 document.addEventListener("DOMContentLoaded", () => {
   updateCartBadge();
-  initAddToCartListeners();
+  loadProducts().then(() => {
+    initAddToCartListeners();
+  });
   renderCartPage();
 });
