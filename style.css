@@ -759,8 +759,13 @@ footer .copyright{
   }
   #product1 .pro {
     margin: 0;
-    width: calc(25% - 10px); /* strictly 4 items per row */
+    width: calc(33.33% - 10px); /* strictly 3 items per row */
     min-width: unset;
+  }
+  #product1 .pro img {
+    height: 200px; /* Decrease height to maintain ratio */
+    width: 100%; /* Increase width bounds to fill */
+    object-fit: cover; /* Prevent squishing */
   }
   #banner {
     height: 20vh;
@@ -814,14 +819,16 @@ footer .copyright{
     padding-top: 10px;
   }
   #product1 .pro {
-    width: calc(33.3% - 4px); /* ensures exactly 3 items side by side */
+    width: calc(33.33% - 4px); /* ensures exactly 3 items side by side */
     min-width: unset;
     margin: 0 0 10px 0;
     padding: 5px;
   }
   #product1 .pro img {
     border-radius: 6px;
-    height: auto; /* scales proportionally */
+    height: 130px; /* Shorter height to balance card shape */
+    width: 100%;
+    object-fit: cover;
   }
   #product1 .pro .des h5 {
     font-size: 8px;
