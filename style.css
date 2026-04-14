@@ -193,10 +193,7 @@ body {
 }
 
 #hero button:hover {
-  background-color: #088178;
-  color: #fff;
-  background-image: none;
-  transform: translateY(-3px);
+  transform: scale(1.05) translateY(-3px);
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
 }
 
@@ -757,13 +754,13 @@ footer .copyright{
     margin: 15px 15px;
   }
   #product1 .pro-container {
-    justify-content: center;
-    gap: 15px;
+    justify-content: space-between;
+    gap: 10px;
   }
   #product1 .pro {
     margin: 0;
-    width: 31%; /* fit 3 items per row roughly with gap */
-    min-width: 170px;
+    width: calc(25% - 10px); /* strictly 4 items per row */
+    min-width: unset;
   }
   #banner {
     height: 20vh;
@@ -811,12 +808,13 @@ footer .copyright{
   }
   #product1 .pro-container {
     justify-content: space-between;
-    gap: 5px;
+    gap: 4px;
+    padding-top: 10px;
   }
   #product1 .pro {
-    width: 23%; /* ensures 4 items side by side */
+    width: calc(25% - 4px); /* ensures exactly 4 items side by side */
     min-width: unset;
-    margin: 0;
+    margin: 0 0 10px 0;
     padding: 5px;
   }
   #product1 .pro img {
